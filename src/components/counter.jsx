@@ -29,8 +29,10 @@ class Counter extends Component {
     // }
 
     // Binding Event Handlers using Arrow Function (Best practice, doesnt require constructor)
-    handleIncrement = () =>  {
+    // Passing Event Arguments
+    handleIncrement = product =>  {
         // Use setState method to change state = {} values.
+        console.log(product);
         this.setState({ count: this.state.count + 1 })
     }
 
@@ -40,7 +42,8 @@ class Counter extends Component {
         return (
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+                {/* use arrow function in onClick to pass argument */}
+                <button onClick={() => this.handleIncrement(product)} className="btn btn-secondary btn-sm">Increment</button>
 
 
                 {/* RenderTag() Demo */}
