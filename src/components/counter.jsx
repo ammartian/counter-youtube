@@ -29,10 +29,9 @@ class Counter extends Component {
     // }
 
     // Binding Event Handlers using Arrow Function (Best practice, doesnt require constructor)
-    // Passing Event Arguments
-    handleIncrement = product =>  {
+    // Passing Event Arguments 
+    handleIncrement = () =>  {
         // Use setState method to change state = {} values.
-        console.log(product);
         this.setState({ count: this.state.count + 1 })
     }
 
@@ -40,10 +39,10 @@ class Counter extends Component {
         // React can only render from 1 parent method so use "<div>" or "<React.Fragement>"
         
         return (
-            <React.Fragment>
+            <div>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 {/* use arrow function in onClick to pass argument */}
-                <button onClick={() => this.handleIncrement(product)} className="btn btn-secondary btn-sm">Increment</button>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
 
 
                 {/* RenderTag() Demo */}
@@ -51,7 +50,7 @@ class Counter extends Component {
                     { this.state.tags.length === 0 && "Please create new tag!" }
                     {this.renderTags()}
                 </ul> */}
-            </React.Fragment>
+            </div>
         );
     }
 
