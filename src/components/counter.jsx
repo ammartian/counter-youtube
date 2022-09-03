@@ -30,9 +30,8 @@ class Counter extends Component {
 
     // Binding Event Handlers using Arrow Function (Best practice, doesnt require constructor)
     handleIncrement = () =>  {
-        console.log("Increment Clicked", this);
-        // obj.method();
-        // function();
+        // Use setState method to change state = {} values.
+        this.setState({ count: this.state.count + 1 })
     }
 
     render() {
