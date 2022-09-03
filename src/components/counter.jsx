@@ -22,14 +22,17 @@ class Counter extends Component {
     // }
 
     //Binding Event Handlers
-    constructor() {
-        super();
-        this.handleIncrement = this.handleIncrement.bind(this);
-        // console.log("Constructor", this);
-    }
+    // constructor() {
+    //     super();
+    //     this.handleIncrement = this.handleIncrement.bind(this);
+    //     // console.log("Constructor", this);
+    // }
 
-    handleIncrement() {
+    // Binding Event Handlers using Arrow Function (Best practice, doesnt require constructor)
+    handleIncrement = () =>  {
         console.log("Increment Clicked", this);
+        // obj.method();
+        // function();
     }
 
     render() {
