@@ -10,19 +10,26 @@ class Counter extends Component {
     // 1. Create a style object
     // 2. Create style inline object 
 
-    fontStyles = {
-        fontSize: 20,
-        fontWeight: "bold"
-    }
+    // fontStyles = {
+    //     fontSize: 20,
+    //     fontWeight: "bold"
+    // }
 
-    renderTags() {
-        if(this.state.tags.length === 0) return <p>There are no tags!</p>
+    // renderTags() {
+    //     if(this.state.tags.length === 0) return <p>There are no tags!</p>
 
-        return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
+    //     return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
+    // }
+
+    //Binding Event Handlers
+    constructor() {
+        super();
+        this.handleIncrement = this.handleIncrement.bind(this);
+        // console.log("Constructor", this);
     }
 
     handleIncrement() {
-        console.log("Increment Clicked")
+        console.log("Increment Clicked", this);
     }
 
     render() {
@@ -30,12 +37,15 @@ class Counter extends Component {
         
         return (
             <React.Fragment>
-                <span style={this.fontStyles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button style={{ fontSize: 20}} onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
-                <ul>
+                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+
+
+                {/* RenderTag() Demo */}
+                {/* <ul>
                     { this.state.tags.length === 0 && "Please create new tag!" }
                     {this.renderTags()}
-                </ul>
+                </ul> */}
             </React.Fragment>
         );
     }
