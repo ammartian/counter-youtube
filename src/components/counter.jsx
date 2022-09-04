@@ -2,69 +2,38 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
-        tags: ["tag1", "tag2", "tag3"] 
-    }
+        value: this.props.value
+    };
 
-    //2 ways to render CSS
-    // 1. Create a style object
-    // 2. Create style inline object 
-
-    // fontStyles = {
-    //     fontSize: 20,
-    //     fontWeight: "bold"
-    // }
-
-    // renderTags() {
-    //     if(this.state.tags.length === 0) return <p>There are no tags!</p>
-
-    //     return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
-    // }
-
-    //Binding Event Handlers
-    // constructor() {
-    //     super();
-    //     this.handleIncrement = this.handleIncrement.bind(this);
-    //     // console.log("Constructor", this);
-    // }
 
     // Binding Event Handlers using Arrow Function (Best practice, doesnt require constructor)
     // Passing Event Arguments 
     handleIncrement = () =>  {
         // Use setState method to change state = {} values.
-        this.setState({ count: this.state.count + 1 })
+        this.setState({ value: this.state.value + 1 })
     }
 
     render() {
         // React can only render from 1 parent method so use "<div>" or "<React.Fragement>"
-        
+        console.log('props', this.props)
+
         return (
             <div>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 {/* use arrow function in onClick to pass argument */}
                 <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
-
-
-                {/* RenderTag() Demo */}
-                {/* <ul>
-                    { this.state.tags.length === 0 && "Please create new tag!" }
-                    {this.renderTags()}
-                </ul> */}
             </div>
         );
     }
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
 
     formatCount() {
-        //destructure the "this.state.count"
-        //return this.state.count === 0 ? 'Zero' : this.state.count;
-
-        const { count } = this.state;
+        const { value: count } = this.state;
         return count === 0 ? 'Zero' :  count;
     }
 }
